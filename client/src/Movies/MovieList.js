@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom'
 import MovieCard from './MovieCard';
 
 const MovieList = props => {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
+  
   useEffect(() => {
     const getMovies = () => {
       axios
         .get('http://localhost:5000/api/movies')
         .then(response => {
-
           setMovies(response.data);
         })
         .catch(error => {
@@ -22,8 +22,7 @@ const MovieList = props => {
     
     getMovies();
   }, []);
-  
-  console.log(movies);
+  // console.log(movies);
 
   return (
     <div className="movie-list">
@@ -40,6 +39,7 @@ const MovieList = props => {
 
 function MovieDetails({ movie }) {
   const { title, director, metascore, stars } = movie;
+
   return (
     <MovieCard 
       title={title}
